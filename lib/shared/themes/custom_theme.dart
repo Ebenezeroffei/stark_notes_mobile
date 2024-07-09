@@ -24,6 +24,12 @@ class CustomTheme {
           ),
         ),
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+            overlayColor: MaterialStateProperty.resolveWith(
+          (states) => Colors.grey.shade100,
+        )),
+      ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
           side: MaterialStateProperty.resolveWith(
@@ -73,6 +79,12 @@ class CustomTheme {
             Radius.circular(5),
           ),
         ),
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+            overlayColor: MaterialStateProperty.resolveWith(
+          (states) => Colors.grey.shade100,
+        )),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
