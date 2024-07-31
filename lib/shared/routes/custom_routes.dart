@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starkeep/core/notes/presentation/pages/home/home_page.dart';
+import 'package:starkeep/core/notes/presentation/pages/home_page.dart';
 
 class CustomRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
