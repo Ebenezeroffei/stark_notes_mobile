@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:starkeep/core/labels/domain/entities/label.dart';
+import 'package:starkeep/shared/widgets/drawer/create_label_dialogue.dart';
+import 'package:starkeep/shared/widgets/drawer/custom_drawer_labels.dart';
 import 'package:starkeep/shared/widgets/drawer/custom_drawer_menu_item.dart';
 import 'package:starkeep/shared/widgets/drawer/custom_drawer_theme_select.dart';
 import 'package:starkeep/shared/widgets/drawer/custom_drawer_title.dart';
@@ -14,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
       child: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
-          children: const [
+          children: [
             CustomDrawerTitle(),
             SizedBox(
               height: 20,
@@ -25,9 +29,14 @@ class CustomDrawer extends StatelessWidget {
             ),
             Divider(),
             CustomDrawerUpdateLabels(),
+            CustomDrawerLabels(),
             CustomDrawerMenuItem(
               icon: Icons.add,
               title: "Create a label",
+              onPressed: () => showAdaptiveDialog(
+                context: context,
+                builder: (_) => CreateLabelDialogue(),
+              ),
             ),
             Divider(),
             CustomDrawerMenuItem(

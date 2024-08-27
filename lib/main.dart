@@ -5,6 +5,7 @@ import 'package:starkeep/shared/providers/theme_mode_provider.dart';
 import 'package:starkeep/shared/routes/custom_routes.dart';
 import 'package:starkeep/shared/themes/custom_theme.dart';
 import 'package:starkeep/shared/utils/init_hive.dart';
+import 'package:toastification/toastification.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -20,14 +21,17 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(providerOfThemeMode);
 
-    return MaterialApp(
-      title: 'Stark Notes',
-      theme: CustomTheme.light(),
-      darkTheme: CustomTheme.dark(),
-      themeMode: themeMode,
-      onGenerateRoute: CustomRoutes.generateRoute,
-      initialRoute: '/',
-      debugShowCheckedModeBanner: false,
+    return ToastificationWrapper(
+      config: const ToastificationConfig(alignment: Alignment.bottomCenter),
+      child: MaterialApp(
+        title: 'Stark Notes',
+        theme: CustomTheme.light(),
+        darkTheme: CustomTheme.dark(),
+        themeMode: themeMode,
+        onGenerateRoute: CustomRoutes.generateRoute,
+        initialRoute: '/',
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starkeep/core/labels/presentation/pages/labels_page.dart';
 import 'package:starkeep/core/notes/presentation/pages/home_page.dart';
 
 class CustomRoutes {
@@ -6,6 +7,8 @@ class CustomRoutes {
     switch (settings.name) {
       case '/':
         return goTo(const HomePage());
+      case '/labels':
+        return goTo(const LabelsPage());
       default:
         return goTo(Scaffold());
     }

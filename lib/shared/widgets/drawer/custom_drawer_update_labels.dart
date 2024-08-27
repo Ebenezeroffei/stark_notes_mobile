@@ -18,7 +18,7 @@ class CustomDrawerUpdateLabels extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () async => Navigator.pushNamed(context, '/labels'),
           child: Text(
             "Edit",
             style: theme.textTheme.bodyMedium?.copyWith(

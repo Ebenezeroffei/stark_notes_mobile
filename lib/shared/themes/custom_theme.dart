@@ -28,7 +28,16 @@ class CustomTheme {
   static ThemeData light() {
     return ThemeData(
       textTheme: textTheme,
-      appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent),
+      appBarTheme: const AppBarTheme(
+        surfaceTintColor: Colors.transparent,
+      ),
+      dialogTheme: const DialogTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(5),
+          ),
+        ),
+      ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: Color(0xff36618e),
