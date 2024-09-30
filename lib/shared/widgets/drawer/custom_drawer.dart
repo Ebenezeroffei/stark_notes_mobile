@@ -48,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
               title: "Trash",
             ),
             Divider(),
-            CustomDrawerThemeSelect(),
+            const CustomDrawerThemeSelect(),
           ],
         ),
       ),

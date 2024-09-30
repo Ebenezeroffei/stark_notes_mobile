@@ -22,6 +22,11 @@ class HomePage extends StatelessWidget {
           HomeAppBar(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, '/note'),
+        child: Icon(Icons.add),
+        elevation: 0,
+      ),
     );
   }
 }

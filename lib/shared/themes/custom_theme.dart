@@ -28,6 +28,13 @@ class CustomTheme {
   static ThemeData light() {
     return ThemeData(
       textTheme: textTheme,
+      bottomSheetTheme: const BottomSheetThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.zero,
+          ),
+        ),
+      ),
       appBarTheme: const AppBarTheme(
         surfaceTintColor: Colors.transparent,
       ),
@@ -92,6 +99,13 @@ class CustomTheme {
   static ThemeData dark() {
     return ThemeData(
       textTheme: textTheme,
+      bottomSheetTheme: const BottomSheetThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.zero,
+          ),
+        ),
+      ),
       appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent),
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,
