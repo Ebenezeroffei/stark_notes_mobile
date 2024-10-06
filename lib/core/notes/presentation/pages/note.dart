@@ -45,7 +45,7 @@ class NoteForm extends StatelessWidget {
               ],
             ),
           ),
-          NoteFooter()
+          const NoteFooter()
         ],
       ),
     );

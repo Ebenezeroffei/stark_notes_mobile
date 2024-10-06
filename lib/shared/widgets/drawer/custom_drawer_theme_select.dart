@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:starkeep/shared/constants/themes_id.dart';
 import 'package:starkeep/shared/extensions/extensions.dart';
-import 'package:starkeep/shared/providers/theme_mode_provider.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class CustomDrawerThemeSelect extends ConsumerWidget {
   const CustomDrawerThemeSelect({super.key});
@@ -9,7 +10,7 @@ class CustomDrawerThemeSelect extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final themeMode = ref.watch(providerOfThemeMode);
+    final themeProvider = ThemeProvider.themeOf(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,10 +22,11 @@ class CustomDrawerThemeSelect extends ConsumerWidget {
           ),
         ),
         Switch.adaptive(
-          value: themeMode == ThemeMode.dark,
-          onChanged: (bool value) => themeMode == ThemeMode.dark
-              ? ref.read(providerOfThemeMode.notifier).state = ThemeMode.light
-              : ref.read(providerOfThemeMode.notifier).state = ThemeMode.dark,
+          value: themeProvider.id == ThemesId.customDarkTheme,
+          onChanged: (bool value) =>
+              ThemeProvider.controllerOf(context).setTheme(
+            value ? ThemesId.customDarkTheme : ThemesId.customLightTheme,
+          ),
         ),
       ],
     ).padT(5).padL(15);

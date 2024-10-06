@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starkeep/core/notes/presentation/widgets/note_backgrounds.dart';
 import 'package:starkeep/core/notes/presentation/widgets/note_options.dart';
 
 class NoteFooter extends StatelessWidget {
@@ -11,7 +12,10 @@ class NoteFooter extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () async => await showModalBottomSheet(
+            context: context,
+            builder: (context) => NoteBackgrounds(),
+          ),
           icon: const Icon(
             Icons.color_lens_outlined,
           ),
@@ -19,7 +23,7 @@ class NoteFooter extends StatelessWidget {
         IconButton(
           onPressed: () async => await showModalBottomSheet(
             context: context,
-            builder: (context) => NoteOptions(),
+            builder: (context) => const NoteOptions(),
           ),
           icon: const Icon(
             Icons.more_vert_rounded,
