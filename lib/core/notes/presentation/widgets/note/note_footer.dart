@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starkeep/core/notes/presentation/widgets/note_backgrounds.dart';
-import 'package:starkeep/core/notes/presentation/widgets/note_options.dart';
+import 'package:starkeep/core/notes/presentation/widgets/note/note_backgrounds.dart';
+import 'package:starkeep/core/notes/presentation/widgets/note/note_options.dart';
 
 class NoteFooter extends StatelessWidget {
   const NoteFooter({super.key});

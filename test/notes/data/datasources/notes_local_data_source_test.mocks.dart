@@ -3,12 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:starkeep/core/notes/data/datasources/notes_local_data_source.dart'
-    as _i2;
-import 'package:starkeep/core/notes/domain/entities/note.dart' as _i4;
+    as _i3;
+import 'package:starkeep/core/notes/domain/entities/note.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -23,19 +23,109 @@ import 'package:starkeep/core/notes/domain/entities/note.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeNote_0 extends _i1.SmartFake implements _i2.Note {
+  _FakeNote_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [NotesLocalDataSourceImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotesLocalDataSourceImpl extends _i1.Mock
-    implements _i2.NotesLocalDataSourceImpl {
+    implements _i3.NotesLocalDataSourceImpl {
   @override
-  _i3.Future<List<_i4.Note>> loadNotes() => (super.noSuchMethod(
+  _i4.Future<List<_i2.Note>> loadNotes() => (super.noSuchMethod(
         Invocation.method(
           #loadNotes,
           [],
         ),
-        returnValue: _i3.Future<List<_i4.Note>>.value(<_i4.Note>[]),
+        returnValue: _i4.Future<List<_i2.Note>>.value(<_i2.Note>[]),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.Note>>.value(<_i4.Note>[]),
-      ) as _i3.Future<List<_i4.Note>>);
+            _i4.Future<List<_i2.Note>>.value(<_i2.Note>[]),
+      ) as _i4.Future<List<_i2.Note>>);
+
+  @override
+  _i4.Future<_i2.Note> createNote({
+    String? title = r'',
+    String? content = r'',
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createNote,
+          [],
+          {
+            #title: title,
+            #content: content,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Note>.value(_FakeNote_0(
+          this,
+          Invocation.method(
+            #createNote,
+            [],
+            {
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Note>.value(_FakeNote_0(
+          this,
+          Invocation.method(
+            #createNote,
+            [],
+            {
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Note>);
+
+  @override
+  _i4.Future<_i2.Note> updateNote({
+    required String? id,
+    required String? title,
+    required String? content,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateNote,
+          [],
+          {
+            #id: id,
+            #title: title,
+            #content: content,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Note>.value(_FakeNote_0(
+          this,
+          Invocation.method(
+            #updateNote,
+            [],
+            {
+              #id: id,
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Note>.value(_FakeNote_0(
+          this,
+          Invocation.method(
+            #updateNote,
+            [],
+            {
+              #id: id,
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Note>);
 }

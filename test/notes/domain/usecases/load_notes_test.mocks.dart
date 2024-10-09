@@ -64,4 +64,90 @@ class MockNotesRepository extends _i1.Mock implements _i3.NotesRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Note>>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i6.Note>> createNote({
+    String? title = r'',
+    String? content = r'',
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createNote,
+          [],
+          {
+            #title: title,
+            #content: content,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>.value(
+            _FakeEither_0<_i5.Failure, _i6.Note>(
+          this,
+          Invocation.method(
+            #createNote,
+            [],
+            {
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>.value(
+                _FakeEither_0<_i5.Failure, _i6.Note>(
+          this,
+          Invocation.method(
+            #createNote,
+            [],
+            {
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i6.Note>> updateNote({
+    required String? id,
+    required String? title,
+    required String? content,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateNote,
+          [],
+          {
+            #id: id,
+            #title: title,
+            #content: content,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>.value(
+            _FakeEither_0<_i5.Failure, _i6.Note>(
+          this,
+          Invocation.method(
+            #updateNote,
+            [],
+            {
+              #id: id,
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>.value(
+                _FakeEither_0<_i5.Failure, _i6.Note>(
+          this,
+          Invocation.method(
+            #updateNote,
+            [],
+            {
+              #id: id,
+              #title: title,
+              #content: content,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Note>>);
 }

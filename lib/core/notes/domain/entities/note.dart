@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 part 'note.g.dart';
 
@@ -28,15 +29,36 @@ class Note extends Equatable {
 
   // TODO: Add color and background fields
 
-  const Note({
-    required this.id,
+  Note({
+    String? id,
     required this.title,
     required this.content,
-    required this.dateModified,
-    required this.dateCreated,
-    required this.isArchived,
-    required this.isPinned,
-  });
+    DateTime? dateModified,
+    DateTime? dateCreated,
+    bool? isArchived,
+    bool? isPinned,
+  })  : id = id ?? Uuid().v4(),
+        dateModified = dateModified ?? DateTime.now(),
+        dateCreated = dateCreated ?? DateTime.now(),
+        isArchived = isArchived ?? false,
+        isPinned = isPinned ?? false;
+
+  Note update({
+    required String title,
+    required String content,
+  }) =>
+      Note(
+        id: id,
+        title: title,
+        content: content,
+        dateCreated: dateCreated,
+        dateModified: DateTime.now(),
+      );
+
+  @override
+  String toString() {
+    return 'Note<$title,$content>';
+  }
 
   @override
   // TODO: implement props
