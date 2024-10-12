@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:starkeep/core/backgrounds/domain/entities/background_color.dart';
 import 'package:starkeep/core/notes/data/datasources/notes_local_data_source.dart';
 import 'package:starkeep/core/notes/domain/entities/note.dart';
 import 'package:starkeep/core/notes/domain/repositories/note_repository.dart';
@@ -36,13 +37,19 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<Either<Failure, Note>> updateNote(
-      {required String id,
-      required String title,
-      required String content}) async {
+  Future<Either<Failure, Note>> updateNote({
+    required String id,
+    required String title,
+    required String content,
+    BackgroundColor? backgroundColor,
+  }) async {
     try {
       final updatedNote = await _localDataSource.updateNote(
-          id: id, title: title, content: content);
+        id: id,
+        title: title,
+        content: content,
+        backgroundColor: backgroundColor,
+      );
       return Right(updatedNote);
     } on CacheException catch (e) {
       return Left(Failure(e.message));

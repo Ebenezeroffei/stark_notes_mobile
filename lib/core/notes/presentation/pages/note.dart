@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:starkeep/core/notes/domain/entities/note.dart';
 import 'package:starkeep/core/notes/presentation/utils/notes_utils.dart';
 import 'package:starkeep/core/notes/presentation/widgets/note/note_content.dart';
 import 'package:starkeep/core/notes/presentation/widgets/note/note_footer.dart';
 import 'package:starkeep/core/notes/presentation/widgets/note/note_title.dart';
+import 'package:starkeep/shared/constants/themes_id.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class NoteForm extends StatefulWidget {
-  final Note note;
+  final String noteId;
 
-  const NoteForm({super.key, required this.note});
+  const NoteForm({super.key, required this.noteId});
 
   @override
   State<NoteForm> createState() => _NoteFormState();
@@ -17,27 +20,38 @@ class NoteForm extends StatefulWidget {
 class _NoteFormState extends State<NoteForm> {
   final _noteTitle = TextEditingController();
   final _noteContent = TextEditingController();
+  Color? _background;
+
+  void _changeBackgroundColor(Color? color) {
+    setState(() {
+      _background = color;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    _noteTitle.text = widget.note.title;
-    _noteContent.text = widget.note.content;
+    final notes = Hive.box<Note>('notesBox');
+    final note = notes.get(widget.noteId);
+    if (note != null) {
+      _noteTitle.text = note.title;
+      _noteContent.text = note.content;
 
-    _noteTitle.addListener(
-      () => NotesUtils.updateNote(
-        content: _noteContent.text,
-        title: _noteTitle.text,
-        id: widget.note.id,
-      ),
-    );
-    _noteContent.addListener(
-      () => NotesUtils.updateNote(
-        content: _noteContent.text,
-        title: _noteTitle.text,
-        id: widget.note.id,
-      ),
-    );
+      _noteTitle.addListener(
+        () => NotesUtils.updateNote(
+          content: _noteContent.text,
+          title: _noteTitle.text,
+          id: note.id,
+        ),
+      );
+      _noteContent.addListener(
+        () => NotesUtils.updateNote(
+          content: _noteContent.text,
+          title: _noteTitle.text,
+          id: note.id,
+        ),
+      );
+    }
   }
 
   @override
@@ -49,8 +63,20 @@ class _NoteFormState extends State<NoteForm> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.note.id);
+    final notes = Hive.box<Note>('notesBox');
+    final note = notes.get(widget.noteId);
+
+    final themeId = ThemeProvider.themeOf(context).id;
+    if (note != null) {
+      if (note.backgroundColor != null) {
+        _background = themeId == ThemesId.customDarkTheme
+            ? note.backgroundColor?.dark
+            : note.backgroundColor?.light;
+      }
+    }
+
     return Scaffold(
+      backgroundColor: _background,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -84,7 +110,12 @@ class _NoteFormState extends State<NoteForm> {
               ],
             ),
           ),
-          const NoteFooter()
+          if (note != null)
+            NoteFooter(
+              note: note,
+              changeBackgroundColor: (Color? color) =>
+                  _changeBackgroundColor(color),
+            )
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:starkeep/core/backgrounds/domain/entities/background_color.dart';
 import 'package:uuid/uuid.dart';
 
 part 'note.g.dart';
@@ -27,10 +28,13 @@ class Note extends Equatable {
   @HiveField(6)
   final bool isPinned;
 
+  final BackgroundColor? backgroundColor;
+
   // TODO: Add color and background fields
 
   Note({
     String? id,
+    this.backgroundColor,
     required this.title,
     required this.content,
     DateTime? dateModified,
@@ -46,11 +50,13 @@ class Note extends Equatable {
   Note update({
     required String title,
     required String content,
+    BackgroundColor? backgroundColor,
   }) =>
       Note(
         id: id,
         title: title,
         content: content,
+        backgroundColor: backgroundColor,
         dateCreated: dateCreated,
         dateModified: DateTime.now(),
       );

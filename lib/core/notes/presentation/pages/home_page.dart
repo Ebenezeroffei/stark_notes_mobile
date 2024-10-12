@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:starkeep/core/notes/domain/entities/note.dart';
 import 'package:starkeep/core/notes/presentation/utils/notes_utils.dart';
 import 'package:starkeep/core/notes/presentation/widgets/home_page/home_app_bar.dart';
 import 'package:starkeep/core/notes/presentation/widgets/home_page/notes.dart';

@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:starkeep/core/backgrounds/domain/entities/background_color.dart';
 import 'package:starkeep/core/notes/domain/entities/note.dart';
 import 'package:starkeep/shared/errors/exceptions.dart';
 
@@ -14,6 +15,7 @@ abstract class NotesLocalDataSource {
     required String id,
     required String title,
     required String content,
+    BackgroundColor? backgroundColor,
   });
 }
 
@@ -41,14 +43,20 @@ class NotesLocalDataSourceImpl implements NotesLocalDataSource {
   }
 
   @override
-  Future<Note> updateNote(
-      {required String id,
-      required String title,
-      required String content}) async {
+  Future<Note> updateNote({
+    required String id,
+    required String title,
+    BackgroundColor? backgroundColor,
+    required String content,
+  }) async {
     try {
       final notes = Hive.box<Note>('notesBox');
       final oldNote = notes.get(id);
-      final updatedNote = oldNote?.update(title: title, content: content);
+      final updatedNote = oldNote?.update(
+        title: title,
+        content: content,
+        backgroundColor: backgroundColor,
+      );
       if (updatedNote != null) {
         await notes.put(id, updatedNote);
         return updatedNote;

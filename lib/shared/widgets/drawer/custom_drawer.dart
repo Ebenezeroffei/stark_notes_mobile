@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:starkeep/core/labels/domain/entities/label.dart';
 import 'package:starkeep/shared/widgets/drawer/create_label_dialogue.dart';
 import 'package:starkeep/shared/widgets/drawer/custom_drawer_labels.dart';
 import 'package:starkeep/shared/widgets/drawer/custom_drawer_menu_item.dart';

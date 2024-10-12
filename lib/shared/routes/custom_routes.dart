@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:starkeep/core/labels/presentation/pages/labels_page.dart';
-import 'package:starkeep/core/notes/domain/entities/note.dart';
 import 'package:starkeep/core/notes/presentation/pages/home_page.dart';
 import 'package:starkeep/core/notes/presentation/pages/note.dart';
 
@@ -12,11 +10,9 @@ class CustomRoutes {
         return goTo(const HomePage());
       case '/note':
         if (settings.arguments is String) {
-          final notesId = settings.arguments;
-          final Box notes = Hive.box<Note>('notesBox');
-          final note = notes.get(notesId);
+          final noteId = settings.arguments;
           return goTo(NoteForm(
-            note: note,
+            noteId: noteId.toString(),
           ));
         }
         return goTo(Scaffold());
